@@ -36,7 +36,6 @@ function modelReady() {
   statusEl.html('model loaded');
 }
 
-
 //draw and setup
 // function setup() {
 //   createCanvas(400, 400);

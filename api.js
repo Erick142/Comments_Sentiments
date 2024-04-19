@@ -14,10 +14,50 @@ async function obtenerComentarios(videoId) {
         const data = await response.json();
 
         const comentarios = data.items;
+        const element = new Element("div", {
+            style: {
+                "display": "flex",
+                "flex-direction": "column",
+            }
+        }, "");
+
         comentarios.forEach((comentario) => {
             const textoComentario = comentario.snippet.topLevelComment.snippet.textDisplay;
             console.log('Comentario:', textoComentario);
+            const prediction = sentiment.predict(textoComentario);
+
+            
+            const elementoTexto = new Element("div", {
+                style: {
+                    "color": "blue"
+                }
+            }, textoComentario);
+            const elementoPrediction = new Element("div", {
+                style: {
+                }
+            }, prediction.score);
+
+            const subElement = new Element("div", "", `${elementoTexto.getElement()} ${elementoPrediction.getElement()}`)
+            if(prediction.score > 0.5){
+                subElement.attributes = {
+                    style: {
+                        "width": `${prediction.score * 100}vw`,
+                        "background-color": "green"
+                    }
+                }
+            }else{
+                subElement.attributes = {
+                    style: {
+                        "width": `${prediction.score * 100}vw`,
+                        "background-color": "red"
+                    }
+                }
+            }
+            
+            element.content += `${subElement.getElement()} `
         });
+
+        element.addToRoot();
 
     } catch (error) {
         console.error('Error al obtener los comentarios:', error);

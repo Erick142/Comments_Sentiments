@@ -41,14 +41,14 @@ async function obtenerComentarios(videoId) {
             if(prediction.score > 0.5){
                 subElement.attributes = {
                     style: {
-                        "width": `${prediction.score * 100}vw`,
+                        //"width": `${prediction.score * 100}vw`,
                         "background-color": "green"
                     }
                 }
             }else{
                 subElement.attributes = {
                     style: {
-                        "width": `${prediction.score * 100}vw`,
+                        //"width": `${prediction.score * 100}vw`,
                         "background-color": "red"
                     }
                 }
@@ -64,4 +64,4 @@ async function obtenerComentarios(videoId) {
     }
 }
 
-const videoId = 'SIm2W9TtzR0';
+const videoId = 'v-oqvAQR5cs';

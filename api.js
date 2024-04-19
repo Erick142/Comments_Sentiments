@@ -65,4 +65,3 @@ async function obtenerComentarios(videoId) {
 }
 
 const videoId = 'SIm2W9TtzR0';
-obtenerComentarios(videoId);

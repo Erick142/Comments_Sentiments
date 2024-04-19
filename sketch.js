@@ -18,6 +18,7 @@ function setup() {
 
   // predicting the sentiment on mousePressed()
   submitBtn.mousePressed(getSentiment);
+  obtenerComentarios(videoId);
 }
 
 function getSentiment() {
